@@ -28,6 +28,16 @@ def to_json(plist):
             b['language_url'] = i.language.wikipedia
             b['language_super'] = i.language.super_lang == None
             a['implementations'].append(b)
+            
+        a['uses'] = []
+        for i in p.uses.all():
+            b =  {}
+            b['url'] = i.url
+            b['name'] = i.name
+            b['line_start'] = i.line_start
+            b['line_end'] = i.line_end
+            a['uses'].append(b)
+        
         ps.append(a)
     return ps
 

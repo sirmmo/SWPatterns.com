@@ -37,7 +37,9 @@ class Implementation(models.Model):
     
 class Use(models.Model):
     pattern = models.ForeignKey(Pattern, related_name="uses")
+    name = models.TextField()
     url = models.URLField()
     line_start = models.IntegerField(null=True, blank=True)
     line_end = models.IntegerField(null=True, blank=True)
-    
+    def __str__(self):
+        return self.name
