@@ -1,4 +1,3 @@
 SWPatterns.com
 ==============
-
-http://swpatterns.com/
+This is the simple code behind http://swpatterns.com/
