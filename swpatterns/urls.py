@@ -1,6 +1,6 @@
 from django.conf.urls import patterns, include, url
 
-# Uncomment the next two lines to enable the admin:
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.contrib import admin
 admin.autodiscover()
 
@@ -17,6 +17,8 @@ urlpatterns = patterns('',
     
     url(r'^langs/list$', "pattern.views.list_langs"),
     url(r'^langs/(?P<id>\d+)$', "pattern.views.get_lang"),
+    
+    #url(r'^auth/callback$', 'pattern.views.list_langs'),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
@@ -24,3 +26,5 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
 )
+
+urlpatterns += staticfiles_urlpatterns()

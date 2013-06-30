@@ -32,6 +32,7 @@ class Implementation(models.Model):
     pattern = models.ForeignKey(Pattern, related_name="implementations")
     gist = models.IntegerField() # for gist
     language = models.ForeignKey(Language)
+    file = models.TextField(null=True, blank =True)
      
     
     
@@ -39,6 +40,7 @@ class Use(models.Model):
     pattern = models.ForeignKey(Pattern, related_name="uses")
     name = models.TextField()
     url = models.URLField()
+    language = models.ManyToManyField(Language, null=True, blank=True)
     line_start = models.IntegerField(null=True, blank=True)
     line_end = models.IntegerField(null=True, blank=True)
     def __str__(self):

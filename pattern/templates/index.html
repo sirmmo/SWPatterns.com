@@ -5,33 +5,62 @@
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
 		<script src="https://github.com/andyet/ICanHaz.js/raw/master/ICanHaz.min.js"></script>
 		<script src="https://raw.github.com/cowboy/jquery-hashchange/v1.3/jquery.ba-hashchange.min.js"></script>
+		<link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+		<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+		<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
+		<script type="text/javascript">
+
+		  var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', 'UA-18421487-2']);
+		  _gaq.push(['_setDomainName', 'swpatterns.com']);
+		  _gaq.push(['_trackPageview']);
+		
+		  (function() {
+		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		  })();
+		
+		</script>
 		<style>
-			@import url(http://fonts.googleapis.com/css?family=Lobster);
 			body {
 				margin: 0 0 0 0;
 				font-family: calibri, arial, Verdana, sans-serif;
 			}
 			header {
-				font-family: 'Lobster', cursive;
-				font-size: 3em;
 				width: 100%;
-				height: 68px;
+				line-height: 65px;
+				height: 65px;
+				background-color: #336699;
 			}
 			header .title {
-				top: 20px;
+				font-family: 'Lobster', cursive;
+				font-size: 3em;
 				padding-left: 20px;
-				position: relative
+				position: relative;
+				color:white;
+				float: left;
+			}
+			header .login{
+				float: right;
+				vertical-align: middle;
+				position: relative;
+				margin-right: 20px;
 			}
 			footer {
 				font-family: calibri, arial, Verdana, sans-serif;
 				font-size: smaller;
 				text-align: center;
 				width: 100%;
+				position: absolute;
+				bottom: 0px;
+				border-top: 1px solid black;
+
 			}
 			nav {
 				height: 22px;
 				width: 100%;
-				background-color: #eee;
+				background-color: #c0c0c0;
 				text-align: center;
 			}
 			article h1 {
@@ -79,6 +108,8 @@
 		</style>
 		<script>
 			$(window).hashchange( function(){
+				_gaq.push(['_trackPageview',location.pathname + location.search  + location.hash]);
+
 				url = location.hash.split('#')[1];
 				$('#content').empty();
 				$.getJSON(url, function(data) {
@@ -194,8 +225,12 @@
 				<div class="uses block">
 				{% templatetag openvariable %}# uses{% templatetag closevariable %}
 					<div class="use">
-						<span class="name"><a href="{% templatetag openvariable %}url{% templatetag closevariable %}">{% templatetag openvariable %}name{% templatetag closevariable %}</a></span>
+						
+						<span class="name"><a target="_blank" href="{% templatetag openvariable %}url{% templatetag closevariable %}">{% templatetag openvariable %}name{% templatetag closevariable %}</a></span>
 						<span class="lines">{% templatetag openvariable %}line_start{% templatetag closevariable %}-{% templatetag openvariable %}line_end{% templatetag closevariable %}</span>
+						{% templatetag openvariable %}# languages{% templatetag closevariable %}				
+							<span class="language"><a target="_blank" href="{% templatetag openvariable %}language_url{% templatetag closevariable %}">{% templatetag openvariable %}language{% templatetag closevariable %}</a></span>
+						{% templatetag openvariable %}/ languages{% templatetag closevariable %}
 					</div>
 				{% templatetag openvariable %}/ uses{% templatetag closevariable %}
 				</div>
@@ -209,15 +244,16 @@
 	<body>
 		<header>
 			<span class="title">Software Patterns</span>
+			<div class=" login"><a href="#" class="btn"><i class="icon-github icon-fixed-width"></i>Login</a></div>
 		</header>
 		<nav id="global_nav">
-			<span class="nav_desc">Tags:</span><a href="#patterns/all">All</a> | <span id="global"></span> 
+			<span class="nav_desc"><i class="icon-tag icon-fixed-width "></i>Tags:</span><a href="#patterns/all">All</a> | <span id="global"></span> 
 		</nav>
 		<nav id="language_nav">
-			<span class="nav_desc">Languages:</span>
+			<span class="nav_desc"><i class="icon-book icon-fixed-width"></i>Languages:</span>
 		</nav>
 		<nav id="local_nav">
-			<span class="nav_desc">Patterns:</span><a href="#patterns/random">Random</a> | 
+			<span class="nav_desc"><i class="icon-reorder icon-fixed-width"></i>Patterns:</span><a href="#patterns/random">Random</a> | 
 		</nav>
 		<div id="content">
 
